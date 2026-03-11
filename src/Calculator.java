@@ -25,6 +25,7 @@ public class Calculator {
     String[] topSymbols = {"AC", "+/-", "%"};
 
     JFrame frame = new JFrame("Calculator");
+    JLabel equationLabel = new JLabel();
     JLabel displayLabel = new JLabel();
     JPanel displayPanel = new JPanel();
     JPanel buttonPanel = new JPanel();
@@ -42,6 +43,13 @@ public class Calculator {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
+        equationLabel.setBackground(blackColor);
+        equationLabel.setForeground(Color.white);
+        equationLabel.setFont(new Font("Arial", Font.PLAIN, 35));
+        equationLabel.setHorizontalAlignment(JLabel.RIGHT);
+        equationLabel.setText("");
+        equationLabel.setOpaque(true);
+
         displayLabel.setBackground(blackColor);
         displayLabel.setForeground(Color.white);
         displayLabel.setFont(new Font("Arial", Font.PLAIN, 80));
@@ -49,7 +57,8 @@ public class Calculator {
         displayLabel.setText("0");
         displayLabel.setOpaque(true);
 
-        displayPanel.setLayout(new BorderLayout());
+        displayPanel.setLayout(new GridLayout(2,1));
+        displayPanel.add(equationLabel);
         displayPanel.add(displayLabel);
         frame.add(displayPanel);
         frame.add(displayPanel, BorderLayout.NORTH);
@@ -95,16 +104,20 @@ public class Calculator {
 
                                     if (operator == "+"){
                                         displayLabel.setText(removeZeroDecimal(numA + numB));
+                                        equationLabel.setText(A + " + " + B);
 
                                     }
                                     else if (operator == "-"){
                                         displayLabel.setText(removeZeroDecimal(numA - numB));
+                                        equationLabel.setText(A + " - " + B);
                                     }
                                     else if (operator == "×"){
                                         displayLabel.setText(removeZeroDecimal(numA * numB));
+                                        equationLabel.setText(A + " × " + B);
                                     }
                                     else if (operator == "÷"){
                                         displayLabel.setText(removeZeroDecimal(numA / numB));
+                                        equationLabel.setText(A + " ÷ " + B);
                                     }
 
                                 }
