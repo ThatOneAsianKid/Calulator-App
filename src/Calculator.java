@@ -135,6 +135,7 @@ public class Calculator {
                             if (buttonValue == "AC"){
                                 clearAll();
                                 displayLabel.setText("0");
+                                equationLabel.setText("");  
                             }
                             else if (buttonValue == "+/-"){
                                 double numDisplay = Double.parseDouble(displayLabel.getText());
